@@ -1,0 +1,60 @@
+<.header>
+  Listing Character sheets
+  <:actions>
+    <.link patch={~p"/character_sheets/new"}>
+      <.button>New Character sheet</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="character_sheets"
+  rows={@streams.character_sheets}
+  row_click={fn {_id, character_sheet} -> JS.navigate(~p"/character_sheets/#{character_sheet}") end}
+>
+  <:col :let={{_id, character_sheet}} label="Strength modifier">{character_sheet.strength_modifier}</:col>
+  <:col :let={{_id, character_sheet}} label="Strength score">{character_sheet.strength_score}</:col>
+  <:col :let={{_id, character_sheet}} label="Strength saving throw proficient">{character_sheet.strength_saving_throw_proficient}</:col>
+  <:col :let={{_id, character_sheet}} label="Strength saving throw">{character_sheet.strength_saving_throw}</:col>
+  <:col :let={{_id, character_sheet}} label="Athletics proficient">{character_sheet.athletics_proficient}</:col>
+  <:col :let={{_id, character_sheet}} label="Athletics">{character_sheet.athletics}</:col>
+  <:col :let={{_id, character_sheet}} label="Intelligence modifier">{character_sheet.intelligence_modifier}</:col>
+  <:col :let={{_id, character_sheet}} label="Intelligence score">{character_sheet.intelligence_score}</:col>
+  <:col :let={{_id, character_sheet}} label="Intelligence saving throw proficient">{character_sheet.intelligence_saving_throw_proficient}</:col>
+  <:col :let={{_id, character_sheet}} label="Intelligence saving throw">{character_sheet.intelligence_saving_throw}</:col>
+  <:col :let={{_id, character_sheet}} label="Arcana proficient">{character_sheet.arcana_proficient}</:col>
+  <:col :let={{_id, character_sheet}} label="Arcana">{character_sheet.arcana}</:col>
+  <:col :let={{_id, character_sheet}} label="History proficient">{character_sheet.history_proficient}</:col>
+  <:col :let={{_id, character_sheet}} label="History">{character_sheet.history}</:col>
+  <:col :let={{_id, character_sheet}} label="Investigation proficient">{character_sheet.investigation_proficient}</:col>
+  <:col :let={{_id, character_sheet}} label="Investigation">{character_sheet.investigation}</:col>
+  <:col :let={{_id, character_sheet}} label="Nature proficient">{character_sheet.nature_proficient}</:col>
+  <:col :let={{_id, character_sheet}} label="Nature">{character_sheet.nature}</:col>
+  <:col :let={{_id, character_sheet}} label="Religion proficient">{character_sheet.religion_proficient}</:col>
+  <:col :let={{_id, character_sheet}} label="Religion">{character_sheet.religion}</:col>
+  <:action :let={{_id, character_sheet}}>
+    <div class="sr-only">
+      <.link navigate={~p"/character_sheets/#{character_sheet}"}>Show</.link>
+    </div>
+    <.link patch={~p"/character_sheets/#{character_sheet}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, character_sheet}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: character_sheet.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="character_sheet-modal" show on_cancel={JS.patch(~p"/character_sheets")}>
+  <.live_component
+    module={DedSheetWeb.CharacterSheetLive.FormComponent}
+    id={@character_sheet.id || :new}
+    title={@page_title}
+    action={@live_action}
+    character_sheet={@character_sheet}
+    patch={~p"/character_sheets"}
+  />
+</.modal>

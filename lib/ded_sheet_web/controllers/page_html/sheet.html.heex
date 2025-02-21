@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+  </head>
+  <body class="bg-gray-100 p-4">
+    <div class="container mx-auto max-w-4xl bg-white shadow-lg p-6 rounded-lg">
+      <form id="charSheet">
+        <div class="grid grid-cols-3 gap-6">
+          <div>
+            <h2 class="text-xl font-bold mb-2">Player Level</h2>
+            <input
+              type="number"
+              id="playerLevel"
+              min="1"
+              max="20"
+              value="1"
+              class="w-full border rounded p-2"
+            />
+
+            <h2 class="text-xl font-bold mt-4 mb-2">Ability Scores</h2>
+            <table class="w-full border">
+              <tr class="bg-gray-200">
+                <th class="p-2">Ability</th>
+                <th class="p-2">Score</th>
+                <th class="p-2">Mod</th>
+              </tr>
+              <tr>
+                <td class="p-2">Strength</td>
+                <td><input type="number" value="10" class="w-full border rounded p-1" /></td>
+                <td><input type="number" value="0" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2">Dexterity</td>
+                <td><input type="number" value="10" class="w-full border rounded p-1" /></td>
+                <td><input type="number" value="0" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2">Constitution</td>
+                <td><input type="number" value="10" class="w-full border rounded p-1" /></td>
+                <td><input type="number" value="0" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2">Intelligence</td>
+                <td><input type="number" value="10" class="w-full border rounded p-1" /></td>
+                <td><input type="number" value="0" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2">Wisdom</td>
+                <td><input type="number" value="10" class="w-full border rounded p-1" /></td>
+                <td><input type="number" value="0" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2">Charisma</td>
+                <td><input type="number" value="10" class="w-full border rounded p-1" /></td>
+                <td><input type="number" value="0" class="w-full border rounded p-1" /></td>
+              </tr>
+            </table>
+
+            <div class="text-center mt-4">
+              <button class="bg-gray-600 text-white py-2 px-4 rounded">Save Data</button>
+              <button class="bg-gray-600 text-white py-2 px-4 rounded ml-2">Load Data</button>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold mb-2">Armor</h2>
+            <label class="block font-semibold">Equipped Armor:</label>
+            <select id="equippedArmor" class="w-full border rounded p-2">
+              <option value="unarmored">None</option>
+              <optgroup label="Light Armor">
+                <option value="padded">Padded</option>
+                <option value="leather">Leather</option>
+                <option value="leather">Studded Leather</option>
+              </optgroup>
+              <optgroup label="Medium Armor">
+                <option value="hide">Hide</option>
+                <option value="chain">Chain Shirt</option>
+                <option value="scale">Scale Mail</option>
+                <option value="breastplate">Breastplate</option>
+                <option value="halfplate">Half Plate</option>
+              </optgroup>
+              <optgroup label="Heavy Armor">
+                <option value="ringmail">Ring Mail</option>
+                <option value="chainmail">Chain Shirt</option>
+                <option value="splint">Splint</option>
+                <option value="plate">Plate</option>
+              </optgroup>
+            </select>
+
+            <h6 class="text-xl font-bold mb-2">Shield</h6>
+            <label class="block font-semibold">Equipped Shield:</label>
+            <select id="equippedShield" class="w-full border rounded p-2">
+              <option value="none">None</option>
+              <option value="shield">Shield</option>
+            </select>
+
+            <h6 class="text-xl font-bold mb-2">Armor Class</h6>
+            <div class="mt-2">
+              <input type="number" id="armorClass" class="border rounded p-1 w-16" />
+            </div>
+            <h2 class="text-xl font-bold mt-4">Hit Points</h2>
+            <div class="mt-2">
+              <span>HP:</span>
+              <input type="number" class="border rounded p-1 w-16" /> /
+              <input type="number" class="border rounded p-1 w-16" />
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold mb-2">Proficiency Bonus</h2>
+            <input type="number" id="profBonus" value="2" class="w-full border rounded p-2" />
+
+            <h2 class="text-xl font-bold mt-4">Skills</h2>
+            <table class="w-full border">
+              <tr class="bg-gray-200">
+                <th class="p-2">Proficient</th>
+                <th class="p-2">Skill</th>
+                <th class="p-2">Score</th>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Acrobatics</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Animal Handling</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Arcana</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Athetics</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Deception</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">History</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Insight</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Intimidation</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Investigation</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Medicine</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Nature</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Perception</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Performance</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Persuasion</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Religion</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Sleight of Hand</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr>
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Stealth</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <tr class="bg-gray-100">
+                <td class="p-2 text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="p-2">Survival</td>
+                <td><input type="number" class="w-full border rounded p-1" /></td>
+              </tr>
+              <!-- Continue com os outros skills -->
+            </table>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

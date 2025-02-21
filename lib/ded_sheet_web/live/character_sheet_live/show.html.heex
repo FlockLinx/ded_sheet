@@ -1,0 +1,54 @@
+<.header>
+  Character sheet {@character_sheet.id}
+  <:subtitle>This is a character_sheet record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/character_sheets/#{@character_sheet.id}/edit"} phx-click={JS.push_focus()}>
+      Editar
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Strength modifier">{@character_sheet.strength_modifier}</:item>
+  <:item title="Strength score">{@character_sheet.strength_score}</:item>
+  <:item title="Strength saving throw proficient">
+    {@character_sheet.strength_saving_throw_proficient}
+  </:item>
+  <:item title="Strength saving throw">{@character_sheet.strength_saving_throw}</:item>
+  <:item title="Athletics proficient">{@character_sheet.athletics_proficient}</:item>
+  <:item title="Athletics">{@character_sheet.athletics}</:item>
+  <:item title="Intelligence modifier">{@character_sheet.intelligence_modifier}</:item>
+  <:item title="Intelligence score">{@character_sheet.intelligence_score}</:item>
+  <:item title="Intelligence saving throw proficient">
+    {@character_sheet.intelligence_saving_throw_proficient}
+  </:item>
+  <:item title="Intelligence saving throw">{@character_sheet.intelligence_saving_throw}</:item>
+  <:item title="Arcana proficient">{@character_sheet.arcana_proficient}</:item>
+  <:item title="Arcana">{@character_sheet.arcana}</:item>
+  <:item title="History proficient">{@character_sheet.history_proficient}</:item>
+  <:item title="History">{@character_sheet.history}</:item>
+  <:item title="Investigation proficient">{@character_sheet.investigation_proficient}</:item>
+  <:item title="Investigation">{@character_sheet.investigation}</:item>
+  <:item title="Nature proficient">{@character_sheet.nature_proficient}</:item>
+  <:item title="Nature">{@character_sheet.nature}</:item>
+  <:item title="Religion proficient">{@character_sheet.religion_proficient}</:item>
+  <:item title="Religion">{@character_sheet.religion}</:item>
+</.list>
+
+<.back navigate={~p"/character_sheets"}>Back to character_sheets</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="character_sheet-modal"
+  show
+  on_cancel={JS.patch(~p"/character_sheets/#{@character_sheet}")}
+>
+  <.live_component
+    module={DedSheetWeb.CharacterSheetLive.FormComponent}
+    id={@character_sheet.id}
+    title={@page_title}
+    action={@live_action}
+    character_sheet={@character_sheet}
+    patch={~p"/character_sheets/#{@character_sheet}"}
+  />
+</.modal>
