@@ -8,7 +8,28 @@ defmodule DedSheet.GameTest do
 
     import DedSheet.GameFixtures
 
-    @invalid_attrs %{history: nil, strength_modifier: nil, strength_score: nil, strength_saving_throw_proficient: nil, strength_saving_throw: nil, athletics_proficient: nil, athletics: nil, intelligence_modifier: nil, intelligence_score: nil, intelligence_saving_throw_proficient: nil, intelligence_saving_throw: nil, arcana_proficient: nil, arcana: nil, history_proficient: nil, investigation_proficient: nil, investigation: nil, nature_proficient: nil, nature: nil, religion_proficient: nil, religion: nil}
+    @invalid_attrs %{
+      history: nil,
+      strength_modifier: nil,
+      strength_score: nil,
+      strength_saving_throw_proficient: nil,
+      strength_saving_throw: nil,
+      athletics_proficient: nil,
+      athletics: nil,
+      intelligence_modifier: nil,
+      intelligence_score: nil,
+      intelligence_saving_throw_proficient: nil,
+      intelligence_saving_throw: nil,
+      arcana_proficient: nil,
+      arcana: nil,
+      history_proficient: nil,
+      investigation_proficient: nil,
+      investigation: nil,
+      nature_proficient: nil,
+      nature: nil,
+      religion_proficient: nil,
+      religion: nil
+    }
 
     test "list_character_sheets/0 returns all character_sheets" do
       character_sheet = character_sheet_fixture()
@@ -21,7 +42,28 @@ defmodule DedSheet.GameTest do
     end
 
     test "create_character_sheet/1 with valid data creates a character_sheet" do
-      valid_attrs = %{history: 42, strength_modifier: 42, strength_score: 42, strength_saving_throw_proficient: true, strength_saving_throw: 42, athletics_proficient: true, athletics: 42, intelligence_modifier: 42, intelligence_score: 42, intelligence_saving_throw_proficient: true, intelligence_saving_throw: 42, arcana_proficient: true, arcana: 42, history_proficient: true, investigation_proficient: true, investigation: 42, nature_proficient: true, nature: 42, religion_proficient: true, religion: 42}
+      valid_attrs = %{
+        history: 42,
+        strength_modifier: 42,
+        strength_score: 42,
+        strength_saving_throw_proficient: true,
+        strength_saving_throw: 42,
+        athletics_proficient: true,
+        athletics: 42,
+        intelligence_modifier: 42,
+        intelligence_score: 42,
+        intelligence_saving_throw_proficient: true,
+        intelligence_saving_throw: 42,
+        arcana_proficient: true,
+        arcana: 42,
+        history_proficient: true,
+        investigation_proficient: true,
+        investigation: 42,
+        nature_proficient: true,
+        nature: 42,
+        religion_proficient: true,
+        religion: 42
+      }
 
       assert {:ok, %CharacterSheet{} = character_sheet} = Game.create_character_sheet(valid_attrs)
       assert character_sheet.history == 42
@@ -52,9 +94,33 @@ defmodule DedSheet.GameTest do
 
     test "update_character_sheet/2 with valid data updates the character_sheet" do
       character_sheet = character_sheet_fixture()
-      update_attrs = %{history: 43, strength_modifier: 43, strength_score: 43, strength_saving_throw_proficient: false, strength_saving_throw: 43, athletics_proficient: false, athletics: 43, intelligence_modifier: 43, intelligence_score: 43, intelligence_saving_throw_proficient: false, intelligence_saving_throw: 43, arcana_proficient: false, arcana: 43, history_proficient: false, investigation_proficient: false, investigation: 43, nature_proficient: false, nature: 43, religion_proficient: false, religion: 43}
 
-      assert {:ok, %CharacterSheet{} = character_sheet} = Game.update_character_sheet(character_sheet, update_attrs)
+      update_attrs = %{
+        history: 43,
+        strength_modifier: 43,
+        strength_score: 43,
+        strength_saving_throw_proficient: false,
+        strength_saving_throw: 43,
+        athletics_proficient: false,
+        athletics: 43,
+        intelligence_modifier: 43,
+        intelligence_score: 43,
+        intelligence_saving_throw_proficient: false,
+        intelligence_saving_throw: 43,
+        arcana_proficient: false,
+        arcana: 43,
+        history_proficient: false,
+        investigation_proficient: false,
+        investigation: 43,
+        nature_proficient: false,
+        nature: 43,
+        religion_proficient: false,
+        religion: 43
+      }
+
+      assert {:ok, %CharacterSheet{} = character_sheet} =
+               Game.update_character_sheet(character_sheet, update_attrs)
+
       assert character_sheet.history == 43
       assert character_sheet.strength_modifier == 43
       assert character_sheet.strength_score == 43
@@ -79,7 +145,10 @@ defmodule DedSheet.GameTest do
 
     test "update_character_sheet/2 with invalid data returns error changeset" do
       character_sheet = character_sheet_fixture()
-      assert {:error, %Ecto.Changeset{}} = Game.update_character_sheet(character_sheet, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Game.update_character_sheet(character_sheet, @invalid_attrs)
+
       assert character_sheet == Game.get_character_sheet!(character_sheet.id)
     end
 

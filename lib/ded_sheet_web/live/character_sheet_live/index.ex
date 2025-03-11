@@ -33,7 +33,10 @@ defmodule DedSheetWeb.CharacterSheetLive.Index do
   end
 
   @impl true
-  def handle_info({DedSheetWeb.CharacterSheetLive.FormComponent, {:saved, character_sheet}}, socket) do
+  def handle_info(
+        {DedSheetWeb.CharacterSheetLive.FormComponent, {:saved, character_sheet}},
+        socket
+      ) do
     {:noreply, stream_insert(socket, :character_sheets, character_sheet)}
   end
 

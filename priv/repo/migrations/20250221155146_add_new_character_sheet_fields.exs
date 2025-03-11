@@ -3,7 +3,6 @@ defmodule DedSheet.Repo.Migrations.AddNewCharacterSheetFields do
 
   def change do
     alter table(:character_sheets) do
-      add :player_level, :integer, default: 1
       add :proficiency_bonus, :integer, default: 2
       add :initiative, :integer, default: 0
       add :size, :string, default: "Medium"

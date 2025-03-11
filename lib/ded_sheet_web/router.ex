@@ -24,6 +24,11 @@ defmodule DedSheetWeb.Router do
     live "/character_sheets/new", CharacterSheetLive.Index, :new
     live "/character_sheets/:id/edit", CharacterSheetLive.Index, :edit
     live "/character_sheets/:id", CharacterSheetLive.Show, :show
+
+    live "/users", UserLive.Index, :index
+    live "/users/new", UserLive.Index, :new
+    live "/users/:id/edit", UserLive.Index, :edit
+    live "/users/:id", UserLive.Show, :show
   end
 
   # Other scopes may use custom stacks.

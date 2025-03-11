@@ -4,9 +4,72 @@ defmodule DedSheetWeb.CharacterSheetLiveTest do
   import Phoenix.LiveViewTest
   import DedSheet.GameFixtures
 
-  @create_attrs %{history: 42, strength_modifier: 42, strength_score: 42, strength_saving_throw_proficient: true, strength_saving_throw: 42, athletics_proficient: true, athletics: 42, intelligence_modifier: 42, intelligence_score: 42, intelligence_saving_throw_proficient: true, intelligence_saving_throw: 42, arcana_proficient: true, arcana: 42, history_proficient: true, investigation_proficient: true, investigation: 42, nature_proficient: true, nature: 42, religion_proficient: true, religion: 42}
-  @update_attrs %{history: 43, strength_modifier: 43, strength_score: 43, strength_saving_throw_proficient: false, strength_saving_throw: 43, athletics_proficient: false, athletics: 43, intelligence_modifier: 43, intelligence_score: 43, intelligence_saving_throw_proficient: false, intelligence_saving_throw: 43, arcana_proficient: false, arcana: 43, history_proficient: false, investigation_proficient: false, investigation: 43, nature_proficient: false, nature: 43, religion_proficient: false, religion: 43}
-  @invalid_attrs %{history: nil, strength_modifier: nil, strength_score: nil, strength_saving_throw_proficient: false, strength_saving_throw: nil, athletics_proficient: false, athletics: nil, intelligence_modifier: nil, intelligence_score: nil, intelligence_saving_throw_proficient: false, intelligence_saving_throw: nil, arcana_proficient: false, arcana: nil, history_proficient: false, investigation_proficient: false, investigation: nil, nature_proficient: false, nature: nil, religion_proficient: false, religion: nil}
+  @create_attrs %{
+    history: 42,
+    strength_modifier: 42,
+    strength_score: 42,
+    strength_saving_throw_proficient: true,
+    strength_saving_throw: 42,
+    athletics_proficient: true,
+    athletics: 42,
+    intelligence_modifier: 42,
+    intelligence_score: 42,
+    intelligence_saving_throw_proficient: true,
+    intelligence_saving_throw: 42,
+    arcana_proficient: true,
+    arcana: 42,
+    history_proficient: true,
+    investigation_proficient: true,
+    investigation: 42,
+    nature_proficient: true,
+    nature: 42,
+    religion_proficient: true,
+    religion: 42
+  }
+  @update_attrs %{
+    history: 43,
+    strength_modifier: 43,
+    strength_score: 43,
+    strength_saving_throw_proficient: false,
+    strength_saving_throw: 43,
+    athletics_proficient: false,
+    athletics: 43,
+    intelligence_modifier: 43,
+    intelligence_score: 43,
+    intelligence_saving_throw_proficient: false,
+    intelligence_saving_throw: 43,
+    arcana_proficient: false,
+    arcana: 43,
+    history_proficient: false,
+    investigation_proficient: false,
+    investigation: 43,
+    nature_proficient: false,
+    nature: 43,
+    religion_proficient: false,
+    religion: 43
+  }
+  @invalid_attrs %{
+    history: nil,
+    strength_modifier: nil,
+    strength_score: nil,
+    strength_saving_throw_proficient: false,
+    strength_saving_throw: nil,
+    athletics_proficient: false,
+    athletics: nil,
+    intelligence_modifier: nil,
+    intelligence_score: nil,
+    intelligence_saving_throw_proficient: false,
+    intelligence_saving_throw: nil,
+    arcana_proficient: false,
+    arcana: nil,
+    history_proficient: false,
+    investigation_proficient: false,
+    investigation: nil,
+    nature_proficient: false,
+    nature: nil,
+    religion_proficient: false,
+    religion: nil
+  }
 
   defp create_character_sheet(_) do
     character_sheet = character_sheet_fixture()
@@ -47,7 +110,9 @@ defmodule DedSheetWeb.CharacterSheetLiveTest do
     test "updates character_sheet in listing", %{conn: conn, character_sheet: character_sheet} do
       {:ok, index_live, _html} = live(conn, ~p"/character_sheets")
 
-      assert index_live |> element("#character_sheets-#{character_sheet.id} a", "Edit") |> render_click() =~
+      assert index_live
+             |> element("#character_sheets-#{character_sheet.id} a", "Edit")
+             |> render_click() =~
                "Edit Character sheet"
 
       assert_patch(index_live, ~p"/character_sheets/#{character_sheet}/edit")
@@ -69,7 +134,10 @@ defmodule DedSheetWeb.CharacterSheetLiveTest do
     test "deletes character_sheet in listing", %{conn: conn, character_sheet: character_sheet} do
       {:ok, index_live, _html} = live(conn, ~p"/character_sheets")
 
-      assert index_live |> element("#character_sheets-#{character_sheet.id} a", "Delete") |> render_click()
+      assert index_live
+             |> element("#character_sheets-#{character_sheet.id} a", "Delete")
+             |> render_click()
+
       refute has_element?(index_live, "#character_sheets-#{character_sheet.id}")
     end
   end
