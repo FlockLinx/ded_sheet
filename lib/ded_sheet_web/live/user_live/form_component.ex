@@ -45,7 +45,7 @@ defmodule DedSheetWeb.UserLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"user" => user_params}, socket) do
-    changeset = Accounts.change_user(socket.assigns.products, user_params)
+    changeset = Accounts.change_user(socket.assigns.user, user_params)
     {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
   end
 
