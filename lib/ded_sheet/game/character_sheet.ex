@@ -29,6 +29,16 @@ defmodule DedSheet.Game.CharacterSheet do
     field :size, :string, default: "Medium"
     field :passive_perception, :integer, default: 10
     field :heroic_inspiration, :boolean, default: false
+    field :dexterity_modifier, :integer, default: 0
+    field :dexterity_score, :integer, default: 0
+    field :dexterity_saving_throw_proficient, :boolean, default: false
+    field :dexterity_saving_throw, :integer, default: 0
+    field :acrobatics_proficient, :boolean, default: false
+    field :acrobatics, :integer, default: 0
+    field :sleight_of_hands_proficient, :boolean, default: false
+    field :sleight_of_hands, :integer, default: 0
+    field :stealth_proficient, :boolean, default: false
+    field :stealth, :integer, default: 0
 
     timestamps(type: :utc_datetime)
   end
@@ -62,7 +72,17 @@ defmodule DedSheet.Game.CharacterSheet do
       :initiative,
       :size,
       :passive_perception,
-      :heroic_inspiration
+      :heroic_inspiration,
+      :dexterity_modifier,
+      :dexterity_score,
+      :dexterity_saving_throw_proficient,
+      :dexterity_saving_throw,
+      :acrobatics_proficient,
+      :acrobatics,
+      :sleight_of_hands_proficient,
+      :sleight_of_hands,
+      :stealth_proficient,
+      :stealth
     ])
     |> validate_required([
       :strength_modifier,
@@ -88,7 +108,17 @@ defmodule DedSheet.Game.CharacterSheet do
       :player_level,
       :proficiency_bonus,
       :size,
-      :passive_perception
+      :passive_perception,
+      :dexterity_modifier,
+      :dexterity_score,
+      :dexterity_saving_throw_proficient,
+      :dexterity_saving_throw,
+      :acrobatics_proficient,
+      :acrobatics,
+      :sleight_of_hands_proficient,
+      :sleight_of_hands,
+      :stealth_proficient,
+      :stealth
     ])
   end
 end

@@ -147,6 +147,75 @@ defmodule DedSheetWeb.CharacterSheetLive.FormComponent do
           phx-change="update_modifiers"
           phx-target={@myself}
         />
+
+        <.input
+          field={@form[:dexterity_score]}
+          type="number"
+          label="Dexterity score"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
+        <.input field={@form[:dexterity_modifier]} type="number" label="Dexterity modifier" />
+
+        <.input
+          field={@form[:dexterity_saving_throw_proficient]}
+          type="checkbox"
+          label="Dexterity saving throw proficient"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
+        <.input
+          field={@form[:dexterity_saving_throw]}
+          type="number"
+          label="Dexterity saving throw"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
+
+
+        <.input
+          field={@form[:acrobatics_proficient]}
+          type="checkbox"
+          label="Acrobatics proficient"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
+        <.input
+          field={@form[:acrobatics]}
+          type="number"
+          label="Acrobatics"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
+        <.input
+          field={@form[:sleight_of_hands_proficient]}
+          type="checkbox"
+          label="Sleight of Hands proficient"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
+        <.input
+          field={@form[:sleight_of_hands]}
+          type="number"
+          label="Sleight of Hands"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
+
+        <.input
+          field={@form[:stealth_proficient]}
+          type="checkbox"
+          label="Stealth proficient"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
+        <.input
+          field={@form[:stealth]}
+          type="number"
+          label="Stealth"
+          phx-change="update_modifiers"
+          phx-target={@myself}
+        />
         <:actions>
           <.button phx-disable-with="Saving...">Save Character sheet</.button>
         </:actions>
@@ -238,13 +307,22 @@ defmodule DedSheetWeb.CharacterSheetLive.FormComponent do
         )
       )
 
+    dexterity_score =
+      parse_int.(
+        Map.get(
+          merged_params,
+          "dexterity_score",
+          Map.get(merged_params, :dexterity_score, "10")
+        )
+      )
+
     # Prof bonus
     proficiency_bonus = div(player_level - 1, 4) + 2
 
     # Calcula os modificadores
     strength_modifier = floor((strength_score - 10) / 2)
     intelligence_modifier = floor((intelligence_score - 10) / 2)
-    # dexterity_modifier = floor((strength_score - 10) / 2)
+    dexterity_modifier = floor((dexterity_score - 10) / 2)
     # wisdom_modifier = floor((strength_score - 10) / 2)
     # constitution_modifier = floor((strength_score - 10) / 2)
 
@@ -281,6 +359,18 @@ defmodule DedSheetWeb.CharacterSheetLive.FormComponent do
     nature_value = check_prof(nature_proficient, intelligence_modifier, proficiency_bonus)
     religion_value = check_prof(religion_proficient, intelligence_modifier, proficiency_bonus)
 
+    # Dexterity
+    dexterity_saving_throw_proficient = Map.get(merged_params, "dexterity_saving_throw_proficient")
+    acrobatics_proficient = Map.get(merged_params, "acrobatics_proficient")
+    sleight_of_hands_proficient = Map.get(merged_params, "sleight_of_hands_proficient")
+    stealth_proficient = Map.get(merged_params, "stealth_proficient")
+
+    # Dexterity values
+    dexterity_saving_throw_value = check_prof(dexterity_saving_throw_proficient, dexterity_modifier, proficiency_bonus)
+    acrobatics_value = check_prof(acrobatics_proficient, dexterity_modifier, proficiency_bonus)
+    sleight_of_hands_value = check_prof(sleight_of_hands_proficient, dexterity_modifier, proficiency_bonus)
+    stealth_value = check_prof(stealth_proficient, dexterity_modifier, proficiency_bonus)
+
     # Atualiza os parâmetros com os valores calculados
     updated_params =
       merged_params
@@ -296,6 +386,11 @@ defmodule DedSheetWeb.CharacterSheetLive.FormComponent do
       |> Map.put("investigation", investigation_value)
       |> Map.put("nature", nature_value)
       |> Map.put("religion", religion_value)
+      |> Map.put("dexterity_modifier", dexterity_modifier)
+      |> Map.put("dexterity_saving_throw", dexterity_saving_throw_value)
+      |> Map.put("acrobatics", acrobatics_value)
+      |> Map.put("sleight_of_hands", sleight_of_hands_value)
+      |> Map.put("stealth", stealth_value)
 
     {updated_params,
      %{
