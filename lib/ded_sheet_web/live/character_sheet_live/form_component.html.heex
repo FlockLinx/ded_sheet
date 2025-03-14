@@ -1,0 +1,462 @@
+<div>
+  <.header>
+    {@title}
+    <:subtitle>Use this form to manage character_sheet records in your database.</:subtitle>
+  </.header>
+
+  <.simple_form for={@form} id="character_sheet-form" phx-target={@myself} phx-submit="save">
+    <.input
+      field={@form[:player_level]}
+      type="number"
+      label="Player Level"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input field={@form[:proficiency_bonus]} type="number" label="Proficiency Bonus" />
+    <.input
+      field={@form[:initiative]}
+      type="number"
+      label="Initiative"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input field={@form[:size]} type="text" label="Size" />
+    <.input
+      field={@form[:passive_perception]}
+      type="number"
+      label="Passive Perception"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:heroic_inspiration]}
+      type="checkbox"
+      label="Heroic Inspiration"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:strength_score]}
+      type="number"
+      label="Strength score"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:strength_modifier]}
+      type="number"
+      label="Strength modifier"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+
+    <.input
+      field={@form[:strength_saving_throw_proficient]}
+      type="checkbox"
+      label="Strength saving throw proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:strength_saving_throw]}
+      type="number"
+      label="Strength saving throw"
+      readonly
+    />
+    <.input
+      field={@form[:athletics_proficient]}
+      type="checkbox"
+      label="Athletics proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:athletics]}
+      type="number"
+      label="Athletics"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:intelligence_score]}
+      type="number"
+      label="Intelligence score"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:intelligence_modifier]}
+      type="number"
+      label="Intelligence modifier"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:intelligence_saving_throw_proficient]}
+      type="checkbox"
+      label="Intelligence saving throw proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:intelligence_saving_throw]}
+      type="number"
+      label="Intelligence saving throw"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:arcana_proficient]}
+      type="checkbox"
+      label="Arcana proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:arcana]}
+      type="number"
+      label="Arcana"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:history_proficient]}
+      type="checkbox"
+      label="History proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:history]}
+      type="number"
+      label="History"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:investigation_proficient]}
+      type="checkbox"
+      label="Investigation proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:investigation]}
+      type="number"
+      label="Investigation"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:nature_proficient]}
+      type="checkbox"
+      label="Nature proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:nature]}
+      type="number"
+      label="Nature"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:religion_proficient]}
+      type="checkbox"
+      label="Religion proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:religion]}
+      type="number"
+      label="Religion"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:dexterity_score]}
+      type="number"
+      label="Dexterity score"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:dexterity_modifier]}
+      type="number"
+      label="Dexterity modifier"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:dexterity_saving_throw_proficient]}
+      type="checkbox"
+      label="Dexterity saving throw proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:dexterity_saving_throw]}
+      type="number"
+      label="Dexterity saving throw"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:acrobatics_proficient]}
+      type="checkbox"
+      label="Acrobatics proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:acrobatics]}
+      type="number"
+      label="Acrobatics"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:sleight_of_hands_proficient]}
+      type="checkbox"
+      label="Sleight of Hands proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:sleight_of_hands]}
+      type="number"
+      label="Sleight of Hands"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:stealth_proficient]}
+      type="checkbox"
+      label="Stealth proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:stealth]}
+      type="number"
+      label="Stealth"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:wisdom_score]}
+      type="number"
+      label="Wisdom score"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:wisdom_modifier]}
+      type="number"
+      label="Wisdom modifier"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:wisdom_saving_throw_proficient]}
+      type="checkbox"
+      label="Wisdom saving throw proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:wisdom_saving_throw]}
+      type="number"
+      label="Wisdom saving throw"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:animal_handling_proficient]}
+      type="checkbox"
+      label="Animal Handling proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:animal_handling]}
+      type="number"
+      label="Animal Handling"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:insight_proficient]}
+      type="checkbox"
+      label="Insight proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:insight]}
+      type="number"
+      label="Insight"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:medicine_proficient]}
+      type="checkbox"
+      label="Medicine proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:medicine]}
+      type="number"
+      label="Medicine"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:perception_proficient]}
+      type="checkbox"
+      label="Perception proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:perception]}
+      type="number"
+      label="Perception"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:survival_proficient]}
+      type="checkbox"
+      label="Survival proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:survival]}
+      type="number"
+      label="Survival"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:charisma_score]}
+      type="number"
+      label="Charisma score"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:charisma_modifier]}
+      type="number"
+      label="Charisma modifier"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:charisma_saving_throw_proficient]}
+      type="checkbox"
+      label="Charisma saving throw proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:charisma_saving_throw]}
+      type="number"
+      label="Charisma saving throw"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:deception_proficient]}
+      type="checkbox"
+      label="Deception proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:deception]}
+      type="number"
+      label="Deception"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:intimidation_proficient]}
+      type="checkbox"
+      label="Intimidation proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:intimidation]}
+      type="number"
+      label="Intimidation"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:performance_proficient]}
+      type="checkbox"
+      label="Performance proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:performance]}
+      type="number"
+      label="Performance"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:persuasion_proficient]}
+      type="checkbox"
+      label="Persuasion proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:persuasion]}
+      type="number"
+      label="Persuasion"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:constitution_score]}
+      type="number"
+      label="Constitution score"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:constitution_modifier]}
+      type="number"
+      label="Constitution modifier"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:constitution_saving_throw_proficient]}
+      type="checkbox"
+      label="Constitution saving throw proficient"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <.input
+      field={@form[:constitution_saving_throw]}
+      type="number"
+      label="Constitution saving throw"
+      phx-change="update_modifiers"
+      phx-target={@myself}
+    />
+    <:actions>
+      <.button phx-disable-with="Saving...">Save Character sheet</.button>
+    </:actions>
+  </.simple_form>
+</div>

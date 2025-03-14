@@ -33,6 +33,7 @@ defmodule DedSheet.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.19"},
+      {:phoenix_view, "~> 2.0"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
